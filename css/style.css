@@ -26,6 +26,7 @@ html{
     hsl(241, 81%, 54%));
     border-bottom-left-radius: 10%;
     border-bottom-right-radius: 10%;
+    backface-visibility: hidden;
 }
 
 .summary-component__header-title{
@@ -44,6 +45,8 @@ html{
     height: 13rem;
     border-radius: 50%;
     margin:2.5rem auto;
+    animation: showUp 1s ease-in-out;
+    
 }
 .summary-component__result-text--main,
 .summary-component__result-text--sub{
@@ -54,11 +57,20 @@ html{
     font-size: 5rem;
     font-weight: 700;
     color:hsl(0, 0%, 100%);
+    animation: moveInLeft .5s ease-in-out 1s;
+    animation-fill-mode: backwards;
+
 }
 .summary-component__result-text--sub{
     color: hsl(241, 46%, 78%);
+    animation: moveInRight .5s ease-in-out 1s;
+    animation-fill-mode: backwards;
 }
 
+.summary-component__message{
+    animation: moveInBottom .5s ease-in-out 1.5s;
+    animation-fill-mode: backwards;
+}
 .summary-component__message-title{
     font-size: 2.4rem;
     color:hsl(0, 0%, 100%);
@@ -69,6 +81,67 @@ html{
     color: hsl(241, 46%, 78%);
 
 }
+
+
+
+@keyframes showUp {
+    0%{
+      background-color: #fff;
+      opacity: 0;  
+      transform: scale(6);
+
+    }
+    80%{
+        transform: scale(0.5);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes moveInLeft {
+    0%{
+      color: #aaa;
+      opacity: 0;  
+      transform: translateX(-3rem);
+
+    }
+    80%{
+        transform: translateX(+.5rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+@keyframes moveInRight {
+    0%{
+      color: #aaa;
+      opacity: 0;  
+      transform: translateX(+3rem);
+
+    }
+    80%{
+        transform: translateX(-.5rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@keyframes moveInBottom {
+    0%{
+        opacity: 0;
+        transform: translateY(4rem);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* 
 
